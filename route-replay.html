@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Route Replay Demo</h3>
+    <div id="map"></div>
+    <br>
+    <div class="actions">
+		<button id="Replay" onclick="replay()">View Replay</button>
+		<button id="Replay" onclick="night_mode()">Night Mode</button>
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyBCrrBit6nZBc_i2b66pCMkTI11Zi_vo1Y&callback=initMap">
+  </script>
+
+
+    <!-- <script type="text/javascript" src="replay-data.json"></script> -->
+    <!-- <script type="text/javascript" src="trace.js"></script> -->
+    <script type="text/javascript" src="demo.js"></script>
+
+    <script type="text/javascript">
+      
+      $(document).ready(function(){
+        $.get('http://localhost/g-map-trace-route/car_location_data.php',function(response){
+          console.log(JSON.parse(response));
+          car = new Car("green", JSON.parse(response));
+        });
+      });
+
+    </script>
+
+  </body>
+</html>
